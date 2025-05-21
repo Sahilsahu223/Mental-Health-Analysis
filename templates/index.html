@@ -1,0 +1,270 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Mental Health Prediction Form</h2>
+        <form id="predictionForm">
+            <label>Sexual Activity (1-10):</label>
+            <input type="number" name="Sexual Activity" min="1" max="10" required>
+
+            <label>Concentration (1-10):</label>
+            <input type="number" name="Concentration" min="1" max="10" required>
+
+            <label>Optimism (1-10):</label>
+            <input type="number" name="Optimisim" min="1" max="10" required>
+
+            <label>Mood Swing:</label>
+            <select name="Mood Swing">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Suicidal Thought:</label>
+            <select name="Suicidal Thought">
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+
+            <label>Sleep Disorder:</label>
+            <select name="Sleep Dissorder">
+                <option>Seldom</option>
+                <option>Sometimes</option>
+                <option>Usually</option>
+                <option>Most Often</option>
+            </select>
+
+            <button type="button" onclick="predict()">Submit</button>
+        </form>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function predict() {
+            const formData = {};
+            const formElements = document.querySelectorAll("#predictionForm input, #predictionForm select");
+            formElements.forEach(element => {
+                formData[element.name] = element.value;
+            });
+
+            fetch("http://127.0.0.1:5000/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").innerText = "Prediction: " + data["Predicted Mental Health Condition"];
+            })
+            .catch(error => console.error("Error:", error));
+        }
+    </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: auto;
+            box-shadow: 0px 0px 10px gray;
+        }
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            font-size: 20px;
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Mental Health Prediction</h1>
+        <form action="/predict" method="post">
+            
+            <h3>Numerical Inputs (0-10 scale)</h3>
+            <label for="Sexual Activity">Sexual Activity:</label>
+            <input type="number" name="Sexual Activity" min="0" max="10" required>
+            
+            <label for="Concentration">Concentration:</label>
+            <input type="number" name="Concentration" min="0" max="10" required>
+
+            <label for="Optimisim">Optimism:</label>
+            <input type="number" name="Optimisim" min="0" max="10" required>
+
+            <h3>Binary Inputs (Yes/No)</h3>
+            <label for="Mood Swing">Mood Swing:</label>
+            <select name="Mood Swing" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Suicidal Thought">Suicidal Thought:</label>
+            <select name="Suicidal Thought" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Anorxia">Anorxia:</label>
+            <select name="Anorxia" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Authority Respect">Authority Respect:</label>
+            <select name="Authority Respect" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Try-Explanation">Try Explanation:</label>
+            <select name="Try-Explanation" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Aggressive Response">Aggressive Response:</label>
+            <select name="Aggressive Response" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Ignore & Move-On">Ignore & Move-On:</label>
+            <select name="Ignore & Move-On" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Nervous Break-down">Nervous Breakdown:</label>
+            <select name="Nervous Break-down" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Admit Mistakes">Admit Mistakes:</label>
+            <select name="Admit Mistakes" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <label for="Overthinking">Overthinking:</label>
+            <select name="Overthinking" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+
+            <h3>Ordinal Inputs</h3>
+            <label for="Sadness">Sadness:</label>
+            <select name="Sadness" required>
+                <option value="1">Seldom</option>
+                <option value="2">Sometimes</option>
+                <option value="3">Usually</option>
+                <option value="4">Most Often</option>
+            </select>
+
+            <label for="Euphoric">Euphoric:</label>
+            <select name="Euphoric" required>
+                <option value="1">Seldom</option>
+                <option value="2">Sometimes</option>
+                <option value="3">Usually</option>
+                <option value="4">Most Often</option>
+            </select>
+
+            <label for="Exhausted">Exhausted:</label>
+            <select name="Exhausted" required>
+                <option value="1">Seldom</option>
+                <option value="2">Sometimes</option>
+                <option value="3">Usually</option>
+                <option value="4">Most Often</option>
+            </select>
+
+            <label for="Sleep Dissorder">Sleep Disorder:</label>
+            <select name="Sleep Dissorder" required>
+                <option value="1">Seldom</option>
+                <option value="2">Sometimes</option>
+                <option value="3">Usually</option>
+                <option value="4">Most Often</option>
+            </select>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                <p>Predicted Mental Health Condition: <strong>{{ prediction }}</strong></p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
