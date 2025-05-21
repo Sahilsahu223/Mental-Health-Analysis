@@ -14,7 +14,6 @@ This project is a web-based system developed using **Flask** and **Machine Learn
 - **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Flask (Python)
 - **ML Libraries:** Scikit-learn
-- **Database:** SQLite (via SQLAlchemy or raw queries)
 
 ## 🧪 Machine Learning Models Evaluated
 
@@ -29,5 +28,4 @@ This project is a web-based system developed using **Flask** and **Machine Learn
 - Real-time mental health predictions
 - Web interface for user assessments
 - Lightweight Flask-based server
-- Secure data handling and validation
 
